@@ -7,6 +7,8 @@
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/easytimer.min.js"></script>
 </head>
 <body>
 
@@ -22,10 +24,12 @@
         		<li><i class="fa fa-star"></i></li>
         	</ul>
 
-        	<span class="moves">3</span> Moves
-
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
+        	<p>Moves <span class="moves"> </span></p>
+            <div id="timer">00:00:00</div>
+            <div class="restart" onclick="startGame()">
+        		<button id="resetButton"> 
+                    <i class="fa fa-repeat">Restart Game</i> 
+                </button>
         	</div>
         </section>
 
@@ -79,6 +83,23 @@
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
+
+        <div id="modal">
+            <div class="winner">
+                <h2>You Won! <span><a class="close" href="#">×</a></span></h2>
+                <div class="greeting">
+                    <h3>Congratulations :)</h3>
+                </div>
+                <div class="stats">
+                    <p>You made <span id="finalMove"> </span> moves </p>
+                    <p>in <span id="totalTime"> </span> </p>
+                    <p>Rating:  <span id="starRating"></span></p>
+                </div>
+                <button id="play-again" onclick="playAgain()">
+                    Play again?</a>
+                </button>
+            </div>
+        </div>
     </div>
 
     <script src="js/app.js"></script>
