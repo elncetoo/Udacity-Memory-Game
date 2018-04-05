@@ -8,10 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	// creating a cards array to hold the list of all cards
 	let card = document.getElementsByClassName('card');
 	let cards = [...card];
-	// looping through each card to add event listener
-	for (var i = 0; i < cards.length; i++){
-	   cards[i].addEventListener('click', displayCard);
-	};
 
 	//assigning the deck to a variable with all the cards in the game
 	const deck = document.querySelector('.deck');
@@ -39,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	var openedCards = [];
 
 	 // toggle between adding a class name to the element
-	var displayCard = function appendClass(){
+	let displayCard = function appendClass(){
 	   this.classList.toggle('open');
 	   this.classList.toggle('show');
 	   this.classList.toggle('disable');
@@ -53,22 +49,38 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 
 
+	// @description shuffles cards when page is refreshed / loads
+	document.body.onload = startGame();
+
 	//storing the shuffled cards in an array and appneding each one to an item
 	function startGame(){
+		// looping through each card to add event listener
+		for (var i = 0; i < cards.length; i++){
+		   cards[i].addEventListener('click', displayCard);
+		};
+
 	   //timer.reset();
-	   var shuffledCards = shuffle(cards);
-	   for (var i= 0; i < shuffledCards.length; i++){
-	      [].forEach.call(shuffledCards, function(item){
+	   cards = shuffle(cards);
+	   for (var i= 0; i < cards.length; i++){
+	   	//deck.innerHTML = "";
+	      [].forEach.call(cards, function(item){
 	         deck.appendChild(item);
 	      });
+	      cards[i].classList.remove("show", "open", "match", "disabled");
 	   }
 
 	   //reseting the timer for the new game
 	   $('#resetButton').click(function () {
    			timer.reset();
+   			startGame();
 		});
-	};
 
+	   
+	};
+	function moveCounter(){    
+		    moves++;    
+		    counter.innerHTML = moves;
+	}
 
 
 	/*
@@ -93,8 +105,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	    return array;
 	}
 
-	// @description shuffles cards when page is refreshed / loads
-	document.body.onload = startGame();
 
 	/*
 	 * set up the event listener for a card. If a card is clicked:
