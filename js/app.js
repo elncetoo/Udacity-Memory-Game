@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
  	//let starsList = document.querySelectorAll(".stars li");
 
  	// declaring move variable
-	let counter = document.querySelector("#moves"), moves = 0;
+	let counter = document.querySelector("#moves");
+	let moves = 0;
 	//counting the moves
 	$('.card').click(function(){
 		moves++;
@@ -33,7 +34,33 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	//star rating
 	function starRating(moves){
+		let firstStar = document.querySelector('.star-1');
+		firstStar.style.color = 'yellow';
+		let secondStar = document.querySelector('.star-2');
+		secondStar.style.color = 'yellow';
+		let thirdStar = document.querySelector('.star-3');
+		thirdStar.style.color = 'yellow';
 
+		if (moves<3) {
+			starsCount = 3;
+		} else if (moves > 20 && moves < 26) {
+			starsCount = 2;
+			firstStar.style.color = 'black';
+		} else if (moves > 26 && moves < 32) {
+			starsCount = 1;
+			firstStar.style.color = 'black';
+			secondStar.style.color = 'black';
+		} else if (moves > 32) {
+			firstStar.style.color = 'black';
+			secondStar.style.color = 'black';
+			thirdStar.style.color = 'black';
+
+		}
+
+	//const starContainer =$('.stars');
+	//const firstStar = starContainer.firstElementChild;
+	//starContainer.removeChild(firstStar);
+		/*
 		if (moves<3) {
 			starsDisplayed = 3;
 		} else if (moves > 20 && moves < 26) {
@@ -48,6 +75,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 
 		document.getElementsByClassName('fa-star');
+
+		*/
 	}
 
 	// declaring a variable for the matchedCards
@@ -103,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	   resetCounter();
 
-	   starRating();
+	   starRating(moves);
 
 	   //reseting the timer for the new game
 	   $('#resetButton').click(function () {
