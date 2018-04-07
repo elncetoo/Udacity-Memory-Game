@@ -25,11 +25,13 @@ document.addEventListener("DOMContentLoaded", function() {
 	$('.card').click(function(){
 		moves++;
 		$('#moves').html(moves);
+		starRating(moves);
 	});
 
 	function resetCounter(){
 	    counter = 0;
 	    document.getElementById('moves').innerHTML = counter;
+	    starRating(moves);
 	}
 
 	//star rating
@@ -41,16 +43,17 @@ document.addEventListener("DOMContentLoaded", function() {
 		let thirdStar = document.querySelector('.star-3');
 		thirdStar.style.color = 'yellow';
 
-		if (moves<3) {
+		//moves = moves.toString();
+		if (moves<19) {
 			starsCount = 3;
-		} else if (moves > 20 && moves < 26) {
+		} else if (moves >= 20 && moves <= 26) {
 			starsCount = 2;
 			firstStar.style.color = 'black';
-		} else if (moves > 26 && moves < 32) {
+		} else if (moves >= 26 && moves <= 32) {
 			starsCount = 1;
 			firstStar.style.color = 'black';
 			secondStar.style.color = 'black';
-		} else if (moves > 32) {
+		} else if (moves >= 32) {
 			firstStar.style.color = 'black';
 			secondStar.style.color = 'black';
 			thirdStar.style.color = 'black';
@@ -117,6 +120,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	   $('#resetButton').click(function () {
    			timer.reset();
    			startGame();
+   			resetCounter();
+   			moves=0;
 		});
 
 	   
