@@ -7,8 +7,6 @@
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="js/easytimer.min.js"></script>
 </head>
 <body>
 
@@ -23,63 +21,64 @@
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
         	</ul>
-
-        	<p>Moves <span class="moves"> </span></p>
+       	
+            <p>Moves:<span id="moves"> </span></p>
             <div id="timer">00:00:00</div>
+
             <div class="restart" onclick="startGame()">
         		<button id="resetButton"> 
-                    <i class="fa fa-repeat">Restart Game</i> 
+                    <i class="fa fa-repeat">Start New Game</i> 
                 </button>
         	</div>
         </section>
 
         <ul class="deck">
-            <li class="card" type="diamond">
+            <li class="card clicks" type="diamond">
                 <i class="fa fa-diamond"></i>
             </li>
-            <li class="card" type="plane">
+            <li class="card clicks" type="plane">
                 <i class="fa fa-paper-plane-o"></i>
             </li>
-            <li class="card" type="anchor">
+            <li class="card clicks" type="anchor">
                 <i class="fa fa-anchor"></i>
             </li>
-            <li class="card" type="bolt">
+            <li class="card clicks" type="bolt">
                 <i class="fa fa-bolt"></i>
             </li>
-            <li class="card" type="cube">
+            <li class="card clicks" type="cube">
                 <i class="fa fa-cube"></i>
             </li>
-            <li class="card" type="anchor">
+            <li class="card clicks" type="anchor">
                 <i class="fa fa-anchor"></i>
             </li>
-            <li class="card" type="leaf">
+            <li class="card clicks" type="leaf">
                 <i class="fa fa-leaf"></i>
             </li>
-            <li class="card" type="bicycle">
+            <li class="card clicks" type="bicycle">
                 <i class="fa fa-bicycle"></i>
             </li>
-            <li class="card" type="diamond">
+            <li class="card clicks" type="diamond">
                 <i class="fa fa-diamond"></i>
             </li>
-            <li class="card" type="bomb">
+            <li class="card clicks" type="bomb">
                 <i class="fa fa-bomb"></i>
             </li>
-            <li class="card" type="leaf">
+            <li class="card clicks" type="leaf">
                 <i class="fa fa-leaf" ></i>
             </li>
-            <li class="card" type="bomb">
+            <li class="card clicks" type="bomb">
                 <i class="fa fa-bomb"></i>
             </li>
-            <li class="card open show" type="bolt">
+            <li class="card clicks" type="bolt">
                 <i class="fa fa-bolt"></i>
             </li>
-            <li class="card" type="bicycle">
+            <li class="card clicks" type="bicycle">
                 <i class="fa fa-bicycle"></i>
             </li>
-            <li class="card" type="plane">
+            <li class="card clicks" type="plane">
                 <i class="fa fa-paper-plane-o"></i>
             </li>
-            <li class="card" type="cube">
+            <li class="card clicks" type="cube">
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
@@ -101,7 +100,8 @@
             </div>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/easytimer.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

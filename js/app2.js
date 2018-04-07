@@ -19,16 +19,16 @@ document.addEventListener("DOMContentLoaded", function() {
  	let starsList = document.querySelectorAll(".stars li");
 
  	// declaring move variable
-	//let moves = 0;
-	let counter = document.querySelector("#moves"), moves = 0;
+ 	let moves = $('#moves').text(counter);
+ 	let counter = 0; //moves counter
 	
-	$('.card').click(function(){
-		moves++;
-		$('#moves').html(moves);
-	});
+	card.addEventListener('click', movesCount());
+	function movesCount(counter){
+		counter++;
+		return counter;
+	}
 
-	//card.addEventListener('click', movesCount());
-	
+	document.getElementById('moves').innerHTML = counter;
 
 	// declaring a variable for the matchedCards
 	let matchedCard = document.getElementsByClassName("match");
@@ -37,19 +37,21 @@ document.addEventListener("DOMContentLoaded", function() {
  	let closeicon = document.querySelector(".close");
 
 	// declare modal
-	let modal = document.getElementById("modal")
+	 let modal = document.getElementById("modal")
 
  	// array for opened cards
 	var openedCards = [];
-
-	
-
 
 	 // toggle between adding a class name to the element
 	let displayCard = function appendClass(){
 	   this.classList.toggle('open');
 	   this.classList.toggle('show');
 	   this.classList.toggle('disable');
+	};
+
+	let showCard = function showCard(){
+	   
+
 	};
 
 	//setting up the timer
@@ -59,21 +61,22 @@ document.addEventListener("DOMContentLoaded", function() {
 	    $('#timer').html(timer.getTimeValues().toString());
 	});
 
+	
 
-	// @description shuffles cards when page is refreshed / loads
+	// shuffles cards when page is refreshed / loads
 	document.body.onload = startGame();
 
 	//storing the shuffled cards in an array and appneding each one to an item
 	function startGame(){
 		// looping through each card to add event listener
-		for (var i = 0; i < cards.length; i++){
-		   cards[i].addEventListener('click', displayCard);
-
-		};
+	for (i = 0; i < cards.length; i++){
+	   cards[i].addEventListener('click', displayCard);
+	   cards[i].addEventListener('click', moveCounter());
+	};
 
 	   //timer.reset();
 	   cards = shuffle(cards);
-	   for (var i= 0; i < cards.length; i++){
+	   for (i= 0; i < cards.length; i++){
 	   	//deck.innerHTML = "";
 	      [].forEach.call(cards, function(item){
 	         deck.appendChild(item);
@@ -87,8 +90,13 @@ document.addEventListener("DOMContentLoaded", function() {
    			startGame();
 		});
 
-	   
+	
+
+
+   
 	};
+	
+
 
 	/*
 	 * Display the cards on the page
