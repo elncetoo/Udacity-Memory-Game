@@ -115,6 +115,10 @@ h1 {
     display: inline-block;
 }
 
+.fa-star-hide {
+    display: none;
+}
+
 .score-panel .restart {
     float: center;
     cursor: pointer;

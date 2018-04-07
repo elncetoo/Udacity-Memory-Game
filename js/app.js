@@ -13,27 +13,47 @@ document.addEventListener("DOMContentLoaded", function() {
 	const deck = document.querySelector('.deck');
 
 	// declaring the variable for the star icons
-	const stars = document.querySelectorAll(".fa-star");
-
+	const star = document.querySelectorAll(".fa-star");
+	let stars = [...star];
 	// creating stars list
- 	let starsList = document.querySelectorAll(".stars li");
+ 	//let starsList = document.querySelectorAll(".stars li");
 
  	// declaring move variable
-	//let moves = 0;
 	let counter = document.querySelector("#moves"), moves = 0;
-	
+	//counting the moves
 	$('.card').click(function(){
 		moves++;
 		$('#moves').html(moves);
 	});
 
-	//card.addEventListener('click', movesCount());
-	
+	function resetCounter(){
+	    counter = 0;
+	    document.getElementById('moves').innerHTML = counter;
+	}
+
+	//star rating
+	function starRating(moves){
+
+		if (moves<3) {
+			starsDisplayed = 3;
+		} else if (moves > 20 && moves < 26) {
+			$( "ul.stars li:eq(2)").removeClass('fa-star').addClass('fa-star-hide');
+			starsDisplayed = 2;		
+		} else if (moves > 26 && moves < 32) {
+			$('.fa-star').eq(1).removeClass('fa-star').addClass('fa-star-hide');
+			starsDisplayed = 1;
+		} else if (moves > 32) {
+			$('.fa-star').eq(1).removeClass('fa-star').addClass('fa-star-hide');
+			starsDisplayed = 1;
+		}
+
+		document.getElementsByClassName('fa-star');
+	}
 
 	// declaring a variable for the matchedCards
 	let matchedCard = document.getElementsByClassName("match");
 
-	// close icon in modal ????
+	// close icon in modal 
  	let closeicon = document.querySelector(".close");
 
 	// declare modal
@@ -80,6 +100,10 @@ document.addEventListener("DOMContentLoaded", function() {
 	      });
 	      cards[i].classList.remove("show", "open", "match", "disabled");
 	   }
+
+	   resetCounter();
+
+	   starRating();
 
 	   //reseting the timer for the new game
 	   $('#resetButton').click(function () {
