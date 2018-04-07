@@ -54,29 +54,8 @@ document.addEventListener("DOMContentLoaded", function() {
 			firstStar.style.color = 'black';
 			secondStar.style.color = 'black';
 			thirdStar.style.color = 'black';
-
 		}
 
-	//const starContainer =$('.stars');
-	//const firstStar = starContainer.firstElementChild;
-	//starContainer.removeChild(firstStar);
-		/*
-		if (moves<3) {
-			starsDisplayed = 3;
-		} else if (moves > 20 && moves < 26) {
-			$( "ul.stars li:eq(2)").removeClass('fa-star').addClass('fa-star-hide');
-			starsDisplayed = 2;		
-		} else if (moves > 26 && moves < 32) {
-			$('.fa-star').eq(1).removeClass('fa-star').addClass('fa-star-hide');
-			starsDisplayed = 1;
-		} else if (moves > 32) {
-			$('.fa-star').eq(1).removeClass('fa-star').addClass('fa-star-hide');
-			starsDisplayed = 1;
-		}
-
-		document.getElementsByClassName('fa-star');
-
-		*/
 	}
 
 	// declaring a variable for the matchedCards
