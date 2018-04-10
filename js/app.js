@@ -1,17 +1,9 @@
-document.addEventListener("DOMContentLoaded", function() {
-
 	// creating a cards array to hold the list of all cards
 	let card = document.getElementsByClassName('card');
 	let cards = [...card];
 
 	//assigning the deck to a variable with all the cards in the game
 	const deck = document.querySelector('.deck');
-
-	// declaring the variable for the star icons
-	//const star = document.querySelectorAll(".fa-star");
-	//let stars = [...star];
-	// creating stars list
- 	//let starsList = document.querySelectorAll(".stars li");
 
  	// declaring move variable
 	let counter = document.querySelector("#moves");
@@ -92,33 +84,44 @@ document.addEventListener("DOMContentLoaded", function() {
 	   //let turn = openedCards.length;
 	   if (openedCards.length <=2) {
 	   		checkMatch(openedCards);
-	   		console.log('works');
+	   		//console.log('works');
 	   } else {
 	   		openedCards=[];
-	   		console.log('fuck');
+	   		//console.log('fuck');
 	   }
 
 	};
 
 	function checkMatch(card){
-		console.log(card);
-		if(card[0].firstElementChild.className === card[1].firstElementChild.className){
-            	matched();
-	        } else {
-		   		notMatched();
-		    }
-
-		//console.log('yes');
+		var cardList = document.getElementsByClassName("deck")[0];
+		var cardItems = cardList.getElementsByTagName("li");
+		var matches = [];
+		for (var i = 0; i < card.length; i++) {
+			for (var i = 0; i < cardItems.length; i++) {
+				console.log(cardItems[i].classList);
+				if (cardItems[i].classList[2] == 'open') {
+					matches.push(cardItems[i]);
+				}
+			}
+		}
+		if (matches[0].getAttribute("type") == matches[1].getAttribute("type")) {
+			
+			matched();
+			
+		} else {
+			notMatched();
+		}
 	}
+
 
 	//if cards match
 	function matched(){
-		
+		console.log("Hells yeah !!");
 
 	}
 
 	function notMatched(){
-		
+		console.log("Nope. Try again");
 
 	}
 
@@ -137,25 +140,17 @@ document.addEventListener("DOMContentLoaded", function() {
 				moves=0;
 		});
 
-	// @description shuffles cards when page is refreshed / loads
-	document.body.onload = startGame();
+
 
 	//storing the shuffled cards in an array and appneding each one to an item
 	function startGame(){
-		/*
-		// looping through each card to add event listener
-		for (var i = 0; i < cards.length; i++){
-		   cards[i].addEventListener('click', displayCard);
 
-		}; */
 
 		cardEventListener();
 		timer.start();
 
-	   //timer.reset();
 	   cards = shuffle(cards);
 	   for (var i= 0; i < cards.length; i++){
-	   	//deck.innerHTML = "";
 	      [].forEach.call(cards, function(item){
 	         deck.appendChild(item);
 	      });
@@ -203,6 +198,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	 */
 
 
+	//  shuffles cards when page is refreshed / loads
+	document.body.onload = startGame();
 
-
-});
