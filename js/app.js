@@ -1,10 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-//$(document).ready(function() {
-	/*
-	 * Create a list that holds all of your cards
-	 */
-
 	// creating a cards array to hold the list of all cards
 	let card = document.getElementsByClassName('card');
 	let cards = [...card];
@@ -13,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	const deck = document.querySelector('.deck');
 
 	// declaring the variable for the star icons
-	const star = document.querySelectorAll(".fa-star");
-	let stars = [...star];
+	//const star = document.querySelectorAll(".fa-star");
+	//let stars = [...star];
 	// creating stars list
  	//let starsList = document.querySelectorAll(".stars li");
 
@@ -68,20 +63,64 @@ document.addEventListener("DOMContentLoaded", function() {
  	let closeicon = document.querySelector(".close");
 
 	// declare modal
-	let modal = document.getElementById("modal")
+	let modal = document.getElementById("modal");
 
  	// array for opened cards
-	var openedCards = [];
-
+	let openedCards = [];
+	function cardEventListener(){
+		// looping through each card to add event listener
+		for (i = 0; i < cards.length; i++){
+			cards[i].addEventListener('click', displayCard);
+			cards[i].addEventListener('click', function(){
+				openCard('selected');
+			}, false);
+		};
+	}
 	
-
-
 	 // toggle between adding a class name to the element
 	let displayCard = function appendClass(){
 	   this.classList.toggle('open');
 	   this.classList.toggle('show');
-	   this.classList.toggle('disable');
+	   //this.classList.toggle('disable');
+
 	};
+
+	let openCard = function openCard(card){
+	   //this.classList.toggle('works');
+	   openedCards.push(card);
+	   console.log(JSON.stringify(openedCards));
+	   //let turn = openedCards.length;
+	   if (openedCards.length <=2) {
+	   		checkMatch(openedCards);
+	   		console.log('works');
+	   } else {
+	   		openedCards=[];
+	   		console.log('fuck');
+	   }
+
+	};
+
+	function checkMatch(card){
+		console.log(card);
+		if(card[0].firstElementChild.className === card[1].firstElementChild.className){
+            	matched();
+	        } else {
+		   		notMatched();
+		    }
+
+		//console.log('yes');
+	}
+
+	//if cards match
+	function matched(){
+		
+
+	}
+
+	function notMatched(){
+		
+
+	}
 
 	//setting up the timer
 	var timer = new Timer();
@@ -103,11 +142,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	//storing the shuffled cards in an array and appneding each one to an item
 	function startGame(){
+		/*
 		// looping through each card to add event listener
 		for (var i = 0; i < cards.length; i++){
 		   cards[i].addEventListener('click', displayCard);
 
-		};
+		}; */
+
+		cardEventListener();
+		timer.start();
 
 	   //timer.reset();
 	   cards = shuffle(cards);
@@ -123,9 +166,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	   starRating(moves);
 
-	   
-
-	   
 	};
 
 	/*
@@ -161,8 +201,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	 *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
 	 *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
 	 */
-
-
 
 
 

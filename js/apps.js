@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	}
 
-	/*
+	
 	//storing the shuffled cards in an array and appneding each one to an item
 	function startGame(){
 		
@@ -165,22 +165,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			this.classList.toggle('show');
 			this.classList.toggle('disabled');
 		};
-
 	// @description add opened cards to OpenedCards list and check if cards are match or not
-function cardOpen() {
-    openedCards.push(this);
-    var len = openedCards.length;
-    if(len === 2){
-        moveCounter();
-        if(openedCards[0].type === openedCards[1].type){
-            matched();
-        } else {
-            unmatched();
-        }
-    }
-};
+	function cardOpen() {
+	    openedCards.push(this);
+	    var len = openedCards.length;
+	    if(len === 2){
+	        moveCounter();
+	        if(openedCards[0].type === openedCards[1].type){
+	            matched();
+	        } else {
+	            unmatched();
+	        }
+	    }
+	};
 
-*/
+
 	/*
 	 * set up the event listener for a card. If a card is clicked:
 	 *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -195,6 +194,26 @@ function cardOpen() {
 
 
 
+	//const starContainer =$('.stars');
+	//const firstStar = starContainer.firstElementChild;
+	//starContainer.removeChild(firstStar);
+
+		if (moves<3) {
+			starsDisplayed = 3;
+		} else if (moves > 20 && moves < 26) {
+			$( "ul.stars li:eq(2)").removeClass('fa-star').addClass('fa-star-hide');
+			starsDisplayed = 2;		
+		} else if (moves > 26 && moves < 32) {
+			$('.fa-star').eq(1).removeClass('fa-star').addClass('fa-star-hide');
+			starsDisplayed = 1;
+		} else if (moves > 32) {
+			$('.fa-star').eq(1).removeClass('fa-star').addClass('fa-star-hide');
+			starsDisplayed = 1;
+		}
+
+		document.getElementsByClassName('fa-star');
+
+	
 
 
 });
