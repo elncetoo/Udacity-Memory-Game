@@ -123,3 +123,11 @@ h1 {
     float: center;
     cursor: pointer;
 }
+
+#modal{
+    display: none;
+}
+
+.modal-open{
+    display: block;
+}
